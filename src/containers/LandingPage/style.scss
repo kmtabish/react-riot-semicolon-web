@@ -1,0 +1,481 @@
+@import url('https://fonts.googleapis.com/css?family=Gamja+Flower&subset=korean');
+
+$white: #CCA969;
+$black: #000;
+$blue: #291B2C;
+$light_blue: rgb(46, 37, 48);
+
+body{
+    background-color: $white;
+    font-family: 'Gamja Flower', cursive;
+    color: $white;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.2;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    @media (max-width: 767px){  
+        font-size: 14px;
+    }
+}
+*, :after, :before {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+-ms-box-sizing: border-box;
+box-sizing: border-box;
+}
+.scrollable{
+    overflow-y: auto;
+}
+html, body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+} 
+p{
+    font-size: 16px;
+    @media (max-width: 767px){  
+        font-size: 14px;
+    }
+}
+/* One Line Inputs */
+body input[type="text"],
+body input[type="email"], 
+body textarea,
+body select {  
+    width: 100%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    text-align: center;
+    color: $white;
+    font-size: 25px;
+    outline: none;
+    font-family: 'Gamja Flower', cursive;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    &::-webkit-input-placeholder {
+        color: $white;
+    }
+        
+    &:-moz-placeholder { 
+        color: $white;  
+    }
+        
+    &::-moz-placeholder {   
+        color: $white;  
+    }
+        
+    &:-ms-input-placeholder {  
+        color: $white;  
+    }
+}
+
+body input[type="text"]:focus,
+body input[type="email"]:focus, 
+body textarea:focus,
+body select:focus {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    box-shadow: 0 0 5px $white;
+    border: 1px solid $white;
+    outline: none;
+}
+#app{
+    display: table;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.body-bg-wrap{
+    .body-bg-left {
+        position: absolute;
+        width: 50%;
+        height: 100vh;
+        background: $blue;
+        left: 0;
+        top: 0;
+        z-index: -1;
+    }
+    .body-bg-right {
+        position: absolute;
+        width: 50%;
+        height: 100vh;
+        background: $light_blue;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+    &.game-active{
+        .body-bg-left {
+            width: 100%;
+            height: 50vh;
+        }
+        .body-bg-right {
+            width: 100%;
+            height: 50vh;
+        }
+    }
+}
+.home-screen-outer-wrap{
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%,-50%);
+}
+.game-mode-wrapper{
+    overflow: hidden;
+    .home-screen-inner-wrap{
+        position: static;
+        transform: none;
+    }
+    .home-screen-inner-wrap:after{
+        background: $blue;
+    }
+}
+.letters-wrap {
+    text-align: center;
+    margin: 20px 0;
+    .letter-box{
+        display: inline-block;
+        margin: 0 10px;
+    }
+    .letter{
+        display:block;
+        font-size: 50px;
+        padding: 13px;
+        color: $white;
+        width: 100px;
+        height: 100px;
+        background-color: $blue;
+        animation-name: shake;
+        animation-duration: 400ms;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-play-state: running;
+        cursor: pointer;
+        box-shadow: 9px 7px 22px $blue;
+        animation-name: shake;
+        animation-duration: 4s;
+        border-radius: 50%;
+        &::before,&::after{
+            content: '';
+            display: inline-block;
+            width: 2px;
+            height: 15px;
+            background: $blue;
+            position: absolute;
+            left: 50%;
+            top:-15px;
+        }
+        &::after{
+            bottom: -1px;
+            width: 21px;
+            height: 6px;
+            transform: translateX(-50%);
+            border-radius: 18px;
+            animation-name: shake;
+        }
+    }
+}
+@keyframes shake {
+    0%   {
+        background-color: $light_blue;
+        transform: rotate(10deg);
+    }
+    10%   {
+        background-color: $blue;
+        transform: rotate(12deg);
+    }
+    20%   {
+        background-color: $light_blue;
+        transform: rotate(14deg);
+    }
+    30%   {
+        background-color: $blue;
+        transform: rotate(16deg);
+    }
+    40%   {
+        background-color: $light_blue;
+        transform: rotate(20deg);
+    }
+    50%   {
+        background-color: $light_blue;
+        transform: rotate(-10deg);
+    }
+    60%   {
+        background-color: $blue;
+        transform: rotate(-12deg);
+    }
+    70%   {
+        background-color: $light_blue;
+        transform: rotate(-14deg);
+    }
+    80%   {
+        background-color: $blue;
+        transform: rotate(-16deg);
+    }
+    90%   {
+        background-color: $light_blue;
+        transform: rotate(-20deg);
+    }  
+}
+.change-level-btn {
+    margin-top: 15px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #fff;
+    font-size: 24px;
+    left: 175px;
+    text-decoration: none;
+    padding: 5px 10px;
+    color: $white;
+    border: 1px solid $white;
+    &:hover{
+        box-shadow: 0 0 5px $white;
+        border: 1px solid $white;
+    }
+}
+//Transparent-scroll
+.transparent-scrollable{
+    overflow-y: auto;
+}
+
+.transparent-scrollable::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(202, 177, 177, 0.0);
+	background-color: transparent;
+}
+.transparent-scrollable::-webkit-scrollbar
+{
+	width: 6px;
+    background-color: transparent;
+    display: none; 
+    width: 0px !important;
+    height: 10px;
+}
+.transparent-scrollable::-webkit-scrollbar-thumb
+{
+	background-color: rgba(129, 128, 128, 0.0);
+}
+.home-screen-inner-wrap {
+    border: 8px solid $white;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px 10px;
+    text-align: center;
+    min-width: 711px;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    &.relative{
+        position: static;
+    }
+    &:after{
+        background: $white;
+        content: "";
+        height: 3px;
+        width: 399%;
+        bottom: -25px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 740px;
+    }
+    input[type="text"],input[type="email"]{
+        background: transparent;
+        padding: 20px;
+        border: 2px solid $white;
+        margin-bottom: 10px;
+    }
+    button{
+        margin: 20px 0;
+    }
+    h2{
+        position: absolute;
+        top: -131px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 41px;
+        color: $white;
+        margin: 0;
+        &:after{
+            content: ';';
+            display: inline-block;
+            top: -70px;
+            font-size: 112px;
+        }
+        &:before{
+            background: $white;
+            content: "";
+            height: 3px;
+            width: 399%;
+            bottom: 23px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 740px;
+        }
+
+    }
+}
+.score-board-wrap {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    width: 100px;
+    height: 100px;
+    background: $white;
+    border-radius: 50%;
+    color: $blue;
+    text-align: center;
+    padding: 10px;
+    &:hover{
+        box-shadow: 0 0 5px $white;
+    }
+    h4 {
+        color: $white;
+        font-size: 15px;
+        left: 50%;
+        margin: 0;
+        position: absolute;
+        top: -27px;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        font-size: 28px;
+    }
+    span {
+        font-size: 60px;
+        border: 1px dashed $blue;
+        width: 90px;
+        height: 90px;
+        display: inline-block;
+        border-radius: 50%;
+        position: absolute;
+        left: 5px;
+        top: 5px;
+    }
+}
+.high-score-board-wrap {
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    width: 100px;
+    height: 100px;
+    background: $white;
+    border-radius: 50%;
+    color: $blue;
+    text-align: center;
+    padding: 10px;
+    &:hover{
+        box-shadow: 0 0 5px $white;
+    }
+    h4 {
+        color: $white;
+        font-size: 15px;
+        left: 50%;
+        margin: 0;
+        position: absolute;
+        top: -27px;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        font-size: 28px;
+        width: 124px;
+    }
+    span {
+        font-size: 60px;
+        border: 1px dashed $blue;
+        width: 90px;
+        height: 90px;
+        display: inline-block;
+        border-radius: 50%;
+        position: absolute;
+        left: 5px;
+        top: 5px;
+    }
+}
+.hb-vote-widget{
+    background: transparent;
+}
+.spell-box {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: $white;
+    vertical-align: middle;
+    margin: 0 10px;
+    padding: 0px;
+    font-size: 40px;
+    color: $blue;
+    &.empty {
+        border: 2px solid $white;
+        background: transparent;
+        animation-name: letterShake;
+        animation-duration: 300ms; 
+        animation-timing-function: ease-out; 
+        animation-delay: 0s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        animation-fill-mode: none;
+        animation-play-state: running;
+        color: $white;
+    }
+    input[type="text"]{
+        border: 0;        
+    }
+}
+@keyframes letterShake {
+    0%, 100% {
+      transform: translateX(10%);
+    }
+    50% {
+      transform: translateX(-10%);
+    }
+}
+.home-screen-btm-pane.relative {
+    padding: 36px 0 15px;
+    h3{
+        color: $blue;
+        text-align: center;
+        margin-bottom: 22px;
+        font-size: 29px;
+    }
+}
+.game-level-wrapper.home-screen-inner-wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    h2{
+        span{
+            display: inline-block;
+            animation-name: come-down;
+            animation-duration: 300ms; 
+            animation-timing-function: ease-out; 
+            animation-delay: 0s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            animation-fill-mode: none;
+            animation-play-state: running;
+        }
+    }
+}
+@keyframes come-down {
+    0%, 100% {
+      transform: rotate(5deg);
+    }
+    50% {
+      transform: rotate(-5deg);
+    }
+}
+.margin-l-r-15{
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+}

@@ -1,0 +1,226 @@
+$white: #CCA969;
+$black: #000;
+$blue: #291B2C;
+$light_blue: rgb(46, 37, 48);
+$loadeColor: $white;
+$loadeColorDark: rgb(233, 192, 115);
+
+.modal-wrapper{
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: $white;
+    z-index: 999;
+    i.material-icons {
+        font-size: 50px;
+    }
+    .modal-close-btn {
+        position: absolute;
+        right: 6px;
+        top: 3px;
+        color: $white;
+        font-size: 18px;
+    }
+    .modal-top-pane {
+        background: $blue;
+        min-height: 93px;
+        padding: 15px 10px 10px;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        text-align: center;
+        img{
+            max-width: 35px;
+            display: inline-block;
+        }
+        h4{
+            color: $white;
+            font-size: 35px;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+    .modal-bottom-pane {
+        background-color: $white;
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+        min-height: 146px;
+        padding: 20px;
+        text-align: center;
+        p{
+            color: $blue;
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 1;
+            margin: 10px 0 25px;
+        }
+    }
+}
+
+
+/* Ui Loader */
+
+.ui-loader-comp {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 99;
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.22);
+    }
+    background-color: #291b2c;
+    border-radius: 50%;
+    -webkit-box-shadow: 9px 7px 22px #291b2c;
+    box-shadow: 9px 7px 22px #291b2c;
+    color: $blue;
+    cursor: pointer;
+    display: block;
+    font-size: 50px;
+    height: 126px;
+    left: 42%;
+    padding: 32px;
+    position: absolute;
+    width: 126px;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    animation-name: shakeloader;
+    animation-duration: 1000ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    &::before,&::after{
+        content: '';
+        display: inline-block;
+        width: 2px;
+        height: 15px;
+        background: $blue;
+        position: absolute;
+        left: 50%;
+        top:-15px;
+    }
+    &::after{
+        bottom: -1px;
+        width: 21px;
+        height: 6px;
+        transform: translateX(-50%);
+        border-radius: 18px;
+        animation-name: shake;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: $loadeColorDark;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: center;
+        align-content: center;
+    }
+    
+    .flex {
+        min-height: 60pt;
+    }
+    
+    @keyframes loading {
+        0% {
+        width: 50pt;
+        height: 50pt;
+        margin-top: 0;
+        }
+        25% {
+        height: 4pt;
+        margin-top: 23pt;
+        }
+        50% {
+        width: 4pt;
+        }
+        75% {
+        width: 50pt;
+        }
+        100% {
+        width: 50pt;
+        height: 50pt;
+        margin-top: 0;
+        }
+    }
+    
+    .loader {
+        width: 50pt;
+        height: 50pt;
+        border-radius: 100%;
+        border: $loadeColor 4pt solid;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: transparent;
+        animation: loading 1s infinite;
+    }
+    
+    .load-text {
+        padding-top: 15px;
+        text-align: center;
+        font: 25pt "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: $loadeColor;
+    }
+
+
+}
+
+@keyframes shakeloader {
+    0%   {
+        background-color: $light_blue;
+        transform: rotate(10deg);
+    }
+    10%   {
+        background-color: $blue;
+        transform: rotate(12deg);
+    }
+    20%   {
+        background-color: $light_blue;
+        transform: rotate(14deg);
+    }
+    30%   {
+        background-color: $blue;
+        transform: rotate(16deg);
+    }
+    40%   {
+        background-color: $light_blue;
+        transform: rotate(20deg);
+    }
+    50%   {
+        background-color: $light_blue;
+        transform: rotate(-10deg);
+    }
+    60%   {
+        background-color: $blue;
+        transform: rotate(-12deg);
+    }
+    70%   {
+        background-color: $light_blue;
+        transform: rotate(-14deg);
+    }
+    80%   {
+        background-color: $blue;
+        transform: rotate(-16deg);
+    }
+    90%   {
+        background-color: $light_blue;
+        transform: rotate(-20deg);
+    }
+   
+    
+}
